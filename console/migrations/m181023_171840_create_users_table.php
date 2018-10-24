@@ -19,7 +19,8 @@ class m181023_171840_create_users_table extends Migration
           password_hash VARCHAR(60) DEFAULT NULL,
           auth_token UUID DEFAULT NULL,
           created_at INTEGER NOT NULL,
-          updated_at INTEGER NOT NULL
+          updated_at INTEGER NOT NULL,
+          deleted_at INTEGER NULL
         );");
     }
 
