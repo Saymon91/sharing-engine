@@ -1,0 +1,108 @@
+{
+  "start-transition": "init",
+  "states": {
+    "init": {
+      "before-enter": {
+        "actions": [
+          {
+            "type": "command",
+            "config": {
+              "subject": "context.object",
+              "method": "command",
+              "args": ["change-state", "reserved"],
+              "on-reject-result": false,
+              "on-resolve-result": true
+            }
+          }
+        ]
+      },
+      "before-enter-error-target-state": "init-error",
+      "after-enter": {
+        "actions": [
+          {
+            "type": "command",
+            "config": {
+              "subject": "context.client",
+              "method": "command",
+              "args": ["send-push", "context.rental.startRentalMessage"],
+              "on-reject-result": true,
+              "on-resolve-result": true
+            }
+          },
+          {
+            "type": "event",
+            "config": {
+              "event": "rental-started",
+              "args": [{
+                "car_id": "context.object.id",
+                "client_id": "context.client.id"
+              }]
+            }
+          }
+        ]
+      },
+      "after-enter-error-target-state": "init-error",
+      "before-exit": {
+        "actions": []
+      },
+      "before-exit-error-target-state": "init-error",
+      "after-exit": {
+        "actions": []
+      },
+      "after-exit-error-target-state": "init-error"
+    },
+    "reserved": {
+      "before-enter": {
+        "actions": [
+          {
+            "type": "command",
+            "config": {
+              "subject": "context.object",
+              "method": "command",
+              "args": ["change-state", "reserved"],
+              "on-reject-result": false,
+              "on-resolve-result": true
+            }
+          }
+        ]
+      },
+      "after-enter": {
+        "actions": [
+          {
+            "type": "command",
+            "config": {
+              "subject": "context.client",
+              "method": "command",
+              "args": ["send-push", "context.rental.startRentalMessage"],
+              "on-reject-result": true,
+              "on-resolve-result": true
+            }
+          },
+          {
+            "type": "event",
+            "config": {
+              "event": "rental-started",
+              "args": [{
+                "car_id": "context.object.id",
+                "client_id": "context.client.id"
+              }]
+            }
+          }
+        ]
+      },
+      "before-exit": {
+        "actions": []
+      },
+      "after-exit": {
+        "actions": []
+      }
+    }
+  },
+  "transitions": {
+    "init": {
+      "action-reserved": {
+        "to": ""
+      }
+    }
+  }
+}

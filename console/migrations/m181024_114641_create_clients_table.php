@@ -16,7 +16,7 @@ class m181024_114641_create_clients_table extends Migration
           id BIGSERIAL PRIMARY KEY,
           user_id UUID UNIQUE NOT NULL REFERENCES users (id),
           name JSON,
-          status: SMALLINT NOT NULL,
+          status SMALLINT NOT NULL,
           created_at INTEGER NOT NULL,
           updated_at INTEGER NOT NULL
         );");

@@ -1,18 +1,53 @@
 <?php
 return [
     'components' => [
-        'postgres' => [
+        'users' => [
             'class' => yii\db\Connection::class,
-            'dsn' => 'pgsql:host=127.0.0.1;port=5432;dbname=sharing',
+            'dsn' => 'pgsql:host=127.0.0.1;port=5432;dbname=users',
             'username' => 'sharing',
             'password' => 'sharing',
             'charset' => 'utf8',
             'schemaMap' => [
                 'pgsql' => [
                     'class' => yii\db\pgsql\Schema::class,
-                ]
+                ],
             ],
-            'autoConnect' => false
+        ],
+        'operations' => [
+            'class' => yii\db\Connection::class,
+            'dsn' => 'pgsql:host=127.0.0.1;port=5432;dbname=operations',
+            'username' => 'sharing',
+            'password' => 'sharing',
+            'charset' => 'utf8',
+            'schemaMap' => [
+                'pgsql' => [
+                    'class' => yii\db\pgsql\Schema::class,
+                ],
+            ],
+        ],
+        'assets' => [
+            'class' => yii\db\Connection::class,
+            'dsn' => 'pgsql:host=127.0.0.1;port=5432;dbname=assets',
+            'username' => 'sharing',
+            'password' => 'sharing',
+            'charset' => 'utf8',
+            'schemaMap' => [
+                'pgsql' => [
+                    'class' => yii\db\pgsql\Schema::class,
+                ],
+            ],
+        ],
+        'commercial' => [
+            'class' => yii\db\Connection::class,
+            'dsn' => 'pgsql:host=127.0.0.1;port=5432;dbname=commercial',
+            'username' => 'sharing',
+            'password' => 'sharing',
+            'charset' => 'utf8',
+            'schemaMap' => [
+                'pgsql' => [
+                    'class' => yii\db\pgsql\Schema::class,
+                ],
+            ],
         ],
         'logs' => [
             'class' => \yii\mongodb\Connection::class,
